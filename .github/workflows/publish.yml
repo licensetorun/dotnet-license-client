@@ -1,0 +1,28 @@
+name: Publish
+
+# Publishes to NuGet when a vX.Y.Z tag is pushed, or on a manual run.
+# Requires repo secret: NUGET_API_KEY (a nuget.org API key). The version
+# published is the <Version> in the .csproj.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Test
+        run: dotnet test tests/Licensetorun.LicenseClient.Tests.csproj -c Release
+
+      - name: Pack
+        run: dotnet pack src/Licensetorun.LicenseClient.csproj -c Release -o artifacts
+
+      - name: Publish
+        run: dotnet nuget push "artifacts/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
