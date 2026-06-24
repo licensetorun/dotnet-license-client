@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>Licensetorun.LicenseClient</AssemblyName>
+    <RootNamespace>Licensetorun.Licensing</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591;1573</NoWarn>
+
+    <PackageId>Licensetorun.LicenseClient</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Licensetorun.com</Authors>
+    <Company>BWeb Solutions LLC</Company>
+    <Description>.NET client for Licensetorun.com — activate, validate, swap and check updates for your licensed product.</Description>
+    <PackageTags>license;licensing;activation;saas;licensetorun</PackageTags>
+    <PackageProjectUrl>https://licensetorun.com</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/licensetorun/dotnet-license-client</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>
